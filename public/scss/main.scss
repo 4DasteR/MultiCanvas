@@ -1,0 +1,279 @@
+@import "important";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ede;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+
+  main {
+    flex: 1; /* Use flex to make main expand to fill the available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    canvas {
+      width: 40vw;
+      height: 40vw;
+    }
+
+    #pixel-info {
+      position: absolute;
+      bottom: 2vmin;
+      left: 2vmin;
+      z-index: 2;
+      width: 11.3vw;
+      height: 23vh;
+      border-radius: 15px;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.825) 50%, rgba(0, 0, 0, 0.75) 100%);
+      color: #fff;
+      display: none;
+      flex-direction: column;
+      justify-content: space-evenly;
+      font-size: $fSize;
+      font-family: 'Minecraft', sans-serif;
+
+      .info {
+        margin: 0 1vmin;
+        width: 90%;
+      }
+
+      #info-name {
+        font-size: $fSize + 0.4;
+        border-bottom: 0.35vmin solid #fff;
+        box-sizing: border-box;
+        text-align: center;
+        padding-bottom: 0.5vmin;
+      }
+
+      #info-color {
+        display: flex;
+        align-items: center;
+
+        span {
+          display: inline-block;
+        }
+
+        #info-color-box {
+          width: 1vw;
+          height: 1vw;
+          outline: 1px solid white;
+          margin: 0 0.5vw;
+        }
+
+        #info-color-text {
+          font-size: $fSize - 0.17;
+        }
+
+      }
+    }
+
+    #user-info {
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      top: 0;
+      //width: 25vw;
+      min-width: fit-content;
+      min-height: fit-content;
+      background: #ddd;
+      border-radius: 0 0 0 15px;
+      display: flex;
+      flex-direction: row;
+      font-family: "Minecraft", sans-serif;
+      padding-left: 1vw;
+      $border-user-info: 1px solid black;
+      border-left: $border-user-info;
+      border-bottom: $border-user-info;
+
+      p {
+        min-width: fit-content;
+        //width: 72%;
+        height: 100%;
+        font-size: $fSize+0.25;
+      }
+
+      form {
+        position: relative;
+        width: 28%;
+        height: 100%;
+        font-family: inherit;
+        margin: 0 1vw;
+
+        button {
+          font-family: inherit;
+          padding: 0 0.3vw;
+          color: #fff;
+          background: linear-gradient(to bottom, #000, #333);
+          border: 2px solid black;
+          box-sizing: border-box;
+          border-radius: 5px;
+          user-select: none !important;
+          font-size: $fSize;
+          margin: auto;
+
+          &:hover, &:focus {
+            cursor: pointer;
+            background: linear-gradient(to bottom, #222, #555);
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    height: 10%;
+    background: #ddd;
+    display: block;
+    position: relative;
+
+    #colors {
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      position: absolute;
+
+      #NONE {
+        user-select: none !important;
+        -webkit-user-drag: none !important;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      #BLACK, #GRAY, #DARK_GREEN, #BLUE, #NAVY, #VIOLET {
+        color: #fff;
+      }
+
+      .color-tile {
+        $cTile-size: 5vmin;
+        width: $cTile-size;
+        height: $cTile-size;
+        border: 2.5px solid black;
+        box-sizing: border-box;
+        border-radius: 5px;
+        margin: auto;
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Minecraft", sans-serif;
+        font-weight: bold;
+        font-size: 1vw;
+
+        &:hover {
+          cursor: pointer;
+          outline: 3.25px solid black !important;
+        }
+      }
+    }
+
+    #log-in-form {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      display: flex;
+      background: rgba(255, 255, 255, 0.95);
+
+      form {
+        position: absolute;
+        width: 34%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        left: 1vw;
+
+        input {
+          width: 10vw;
+          height: 4.5vh;
+          margin: auto 1vw;
+          border-radius: 5px;
+          border: 2px solid black;
+          box-sizing: border-box;
+          padding: 0 1vw;
+          font-family: "Minecraft", sans-serif;
+          font-size: 1.1vw;
+          //color: #fff;
+          //background: linear-gradient(to bottom, #000, #333);
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        button {
+          width: 8vw;
+          height: 4.5vh;
+          font-family: "Minecraft", sans-serif;
+          font-size: 1vw;
+          padding: 0 1vw;
+          margin: auto 1vw;
+          color: #fff;
+          background: linear-gradient(to bottom, #000, #333);
+          border: 2px solid black;
+          box-sizing: border-box;
+          border-radius: 5px;
+          user-select: none !important;
+
+          &:hover, &:focus {
+            cursor: pointer;
+            background: linear-gradient(to bottom, #222, #555);
+            outline: none;
+          }
+        }
+      }
+
+      div {
+        position: absolute;
+        display: flex;
+        right: 0;
+        z-index: 2;
+        width: 32%;
+        height: 100%;
+        justify-content: center;
+
+        span {
+          display: flex;
+          font-family: "Minecraft", sans-serif;
+          font-size: 1vw;
+          width: 85%;
+          height: 4.5vh;
+          margin: auto;
+          text-align: center;
+          align-items: center;
+          color: #555;
+
+          #log-link {
+            display: none;
+          }
+
+          p {
+            user-select: none !important;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+
+            &:hover {
+              cursor: pointer;
+              color: #777;
+            }
+          }
+        }
+      }
+    }
+  }
+}

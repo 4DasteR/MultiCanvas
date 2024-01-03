@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi Canvas</title>
+    <script src="jquery-3.7.1-min.js" defer></script>
+    <script src="ts/pixelmap.js" defer></script>
+    <script src="ts/colorpicker.js" defer></script>
+    <script src="ts/canvas.js" defer></script>
+    <script src="ts/log-reg.js" defer></script>
+    <link rel="stylesheet" href="scss/main.css" type="text/css">
+</head>
+<body>
+<main>
+    <div id="pixel-info">
+        <span class="info" id="info-name">Pixel Info</span>
+        <span class="info" id="info-position"></span>
+        <span class="info" id="info-color">
+            <span>Color: </span>
+            <span id="info-color-box"></span>
+            <span id="info-color-text"></span>
+        </span>
+        <span class="info" id="info-user"></span>
+        <span class="info" id="info-date"></span>
+    </div>
+    <% if(logged_in){ %>
+    <div id="user-info">
+        <p>Logged in as: <%= username %></p>
+        <form action="/u/logout" method="POST">
+            <button>LOGOUT</button>
+        </form>
+    </div>
+    <% } %>
+    <canvas></canvas>
+</main>
+<footer>
+    <div id="colors"></div>
+    <% if(!logged_in){ %>
+        <div id="log-in-form">
+            <form action="/u/login" method="POST">
+                <input type="text" name="username" id="" placeholder="username" required>
+                <input type="password" name="password" id="" placeholder="password" required>
+                <button>LOG IN</button>
+            </form>
+            <div>
+                <span id="log-reg-link">
+                    <p id="reg-link">Don't have an account? Register here!</p>
+                    <p id="log-link">Already have an account? Log in here!</p>
+                </span>
+            </div>
+        </div>
+    <% } %>
+</footer>
+</body>
+</html>

@@ -1,0 +1,246 @@
+@font-face {
+  font-family: "Minecraft";
+  src: url("../resources/Minecraftia.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ede;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+body main {
+  flex: 1; /* Use flex to make main expand to fill the available space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+body main canvas {
+  width: 40vw;
+  height: 40vw;
+}
+body main #pixel-info {
+  position: absolute;
+  bottom: 2vmin;
+  left: 2vmin;
+  z-index: 2;
+  width: 11.3vw;
+  height: 23vh;
+  border-radius: 15px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.825) 50%, rgba(0, 0, 0, 0.75) 100%);
+  color: #fff;
+  display: none;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 0.85vw;
+  font-family: "Minecraft", sans-serif;
+}
+body main #pixel-info .info {
+  margin: 0 1vmin;
+  width: 90%;
+}
+body main #pixel-info #info-name {
+  font-size: 1.25vw;
+  border-bottom: 0.35vmin solid #fff;
+  box-sizing: border-box;
+  text-align: center;
+  padding-bottom: 0.5vmin;
+}
+body main #pixel-info #info-color {
+  display: flex;
+  align-items: center;
+}
+body main #pixel-info #info-color span {
+  display: inline-block;
+}
+body main #pixel-info #info-color #info-color-box {
+  width: 1vw;
+  height: 1vw;
+  outline: 1px solid white;
+  margin: 0 0.5vw;
+}
+body main #pixel-info #info-color #info-color-text {
+  font-size: 0.68vw;
+}
+body main #user-info {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  top: 0;
+  min-width: fit-content;
+  min-height: fit-content;
+  background: #ddd;
+  border-radius: 0 0 0 15px;
+  display: flex;
+  flex-direction: row;
+  font-family: "Minecraft", sans-serif;
+  padding-left: 1vw;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+body main #user-info p {
+  min-width: fit-content;
+  height: 100%;
+  font-size: 1.1vw;
+}
+body main #user-info form {
+  position: relative;
+  width: 28%;
+  height: 100%;
+  font-family: inherit;
+  margin: 0 1vw;
+}
+body main #user-info form button {
+  font-family: inherit;
+  padding: 0 0.3vw;
+  color: #fff;
+  background: linear-gradient(to bottom, #000, #333);
+  border: 2px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+  user-select: none !important;
+  font-size: 0.85vw;
+  margin: auto;
+}
+body main #user-info form button:hover, body main #user-info form button:focus {
+  cursor: pointer;
+  background: linear-gradient(to bottom, #222, #555);
+  outline: none;
+}
+body footer {
+  height: 10%;
+  background: #ddd;
+  display: block;
+  position: relative;
+}
+body footer #colors {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: absolute;
+}
+body footer #colors #NONE {
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+body footer #colors #NONE img {
+  width: 100%;
+  height: 100%;
+}
+body footer #colors #BLACK, body footer #colors #GRAY, body footer #colors #DARK_GREEN, body footer #colors #BLUE, body footer #colors #NAVY, body footer #colors #VIOLET {
+  color: #fff;
+}
+body footer #colors .color-tile {
+  width: 5vmin;
+  height: 5vmin;
+  border: 2.5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin: auto;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Minecraft", sans-serif;
+  font-weight: bold;
+  font-size: 1vw;
+}
+body footer #colors .color-tile:hover {
+  cursor: pointer;
+  outline: 3.25px solid black !important;
+}
+body footer #log-in-form {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  display: flex;
+  background: rgba(255, 255, 255, 0.95);
+}
+body footer #log-in-form form {
+  position: absolute;
+  width: 34%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  left: 1vw;
+}
+body footer #log-in-form form input {
+  width: 10vw;
+  height: 4.5vh;
+  margin: auto 1vw;
+  border-radius: 5px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  padding: 0 1vw;
+  font-family: "Minecraft", sans-serif;
+  font-size: 1.1vw;
+}
+body footer #log-in-form form input:focus {
+  outline: none;
+}
+body footer #log-in-form form button {
+  width: 8vw;
+  height: 4.5vh;
+  font-family: "Minecraft", sans-serif;
+  font-size: 1vw;
+  padding: 0 1vw;
+  margin: auto 1vw;
+  color: #fff;
+  background: linear-gradient(to bottom, #000, #333);
+  border: 2px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+  user-select: none !important;
+}
+body footer #log-in-form form button:hover, body footer #log-in-form form button:focus {
+  cursor: pointer;
+  background: linear-gradient(to bottom, #222, #555);
+  outline: none;
+}
+body footer #log-in-form div {
+  position: absolute;
+  display: flex;
+  right: 0;
+  z-index: 2;
+  width: 32%;
+  height: 100%;
+  justify-content: center;
+}
+body footer #log-in-form div span {
+  display: flex;
+  font-family: "Minecraft", sans-serif;
+  font-size: 1vw;
+  width: 85%;
+  height: 4.5vh;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+  color: #555;
+}
+body footer #log-in-form div span #log-link {
+  display: none;
+}
+body footer #log-in-form div span p {
+  user-select: none !important;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+body footer #log-in-form div span p:hover {
+  cursor: pointer;
+  color: #777;
+}
+
+/*# sourceMappingURL=main.css.map */
